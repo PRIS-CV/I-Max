@@ -1,4 +1,4 @@
-# I-Max: Maximize the Resolution Potential of Pre-trained Rectified Flow Transformers
+# I-Max: Maximize the Resolution Potential of Pre-trained Rectified Flow Transformers via Projected Flow
 Official code release for **I-Max + Flux.1-dev** based on diffusers implementation.
 
 <img src="figures/Flux-Pro.jpg" width="800"/>
