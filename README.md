@@ -11,7 +11,7 @@ Official code release for **I-Max + Flux.1-dev** based on diffusers implementati
 Generate 4K high-resolution images and save the generated results along with native-resolution guidance 🤗. The code has just been cleaned, please let us know if there are any issues.
 ```
 import torch
-from pipeline_flux_pro import FluxPipeline
+from pipeline_flux_imax import FluxPipeline
 from transformer_flux import FluxTransformer2DModel
 
 bfl_repo="black-forest-labs/FLUX.1-dev"
