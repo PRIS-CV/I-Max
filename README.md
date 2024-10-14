@@ -1,4 +1,6 @@
 # I-Max: Maximize the Resolution Potential of Pre-trained Rectified Flow Transformers via Projected Flow
+[![arXiv](https://img.shields.io/badge/arXiv-2410.07536-b31b1b.svg)](https://arxiv.org/pdf/2410.07536.pdf)
+
 Official code release for **I-Max + Flux.1-dev** based on diffusers implementation.
 
 <img src="figures/Flux-Pro.jpg" width="800"/>
@@ -39,3 +41,9 @@ images = pipe(prompt=prompt,
 images[0].save(save_name)
 images[1].save("guidance_" + save_name)
 ```
+Or you can directly launch a local Gradio demo via:
+```
+python gradio_demo.py
+```
+
+<img src="figures/gradio_demo.jpg" width="800"/>
