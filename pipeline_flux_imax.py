@@ -567,6 +567,7 @@ class FluxPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
         proportional_attention = True,
         text_duplication = True,
         swin_pachify = True,
+        dwt_level: int = 1,
         guidance_schedule = "cosine_shift",
     ):
         native_resolution = 1024
@@ -728,6 +729,7 @@ class FluxPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             latents=None,
         )
 
+        sigmas = np.linspace(1.0, 1 / num_inference_steps2, num_inference_steps2)
         image_seq_len = latents.shape[1]
         mu = calculate_shift(
             image_seq_len,
@@ -807,8 +809,8 @@ class FluxPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
                 
                 fp_v_ = self._unpack_latents(fp_v, height, width, self.vae_scale_factor)
                 noise_pred_ = self._unpack_latents(noise_pred, height, width, self.vae_scale_factor)
-                fp_v_low = split_frequency_components_dwt(fp_v_)
-                noise_pred_low = split_frequency_components_dwt(noise_pred_)
+                fp_v_low = split_frequency_components_dwt(fp_v_, level=dwt_level)
+                noise_pred_low = split_frequency_components_dwt(noise_pred_, level=dwt_level)
                 fp_v_low = self._pack_latents(fp_v_low, batch_size, num_channels_latents, height // self.vae_scale_factor * 2, width // self.vae_scale_factor * 2)
                 noise_pred_low = self._pack_latents(noise_pred_low, batch_size, num_channels_latents, height // self.vae_scale_factor * 2, width // self.vae_scale_factor * 2)
                 
